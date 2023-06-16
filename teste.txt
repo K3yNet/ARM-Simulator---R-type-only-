@@ -1,0 +1,4 @@
+add R1, R2, R12
+sub R1, R22, R3
+addi R1, R2, 10
+subi R1, R2, 10
