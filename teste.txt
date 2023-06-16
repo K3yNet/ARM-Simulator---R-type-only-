@@ -1,4 +1,6 @@
-add R1, R2, R12
-sub R1, R22, R3
-addi R1, R2, 10
-subi R1, R2, 10
+addi R1, R0, 10
+addi R2, R0, 5
+add R3, R1, R2
+store R3, R0
+load R5, R0
+halt

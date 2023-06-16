@@ -1,27 +1,6 @@
-#include<bits/stdc++.h>
-#include "memory.hpp"
-using namespace std;
-
-map<string, string> mapOpcode = {
-    {"add", "00000001"}, // 3
-    {"sub", "00000010"}, // 3
-    {"zeros", "00000011"}, // 1
-    {"xor", "00000100"}, // 3
-    {"or", "00000101"}, // 3
-    {"passnota", "00000110"}, // 2
-    {"and", "00000111"}, // 3
-    {"asl", "00001000"}, // 3
-    {"asr", "00001001"}, // 3
-    {"passa", "00001100"}, // 2
-    {"load", "00001111"}, // 3*
-    {"store", "00010000"}, // 3*
-    {"addi", "00010001"}, // 3
-    {"subi", "00010010"}, // 3
-    {"nand", "00010011"}, // 3
-    {"nor", "00010100"}, // 3
-    {"xnor", "00010101"}, // 3
-    {"halt", "11111111"}
-};
+#ifndef _TYPES_H
+#include "types.hpp"
+#endif
 
 vector<string> split(string instruction){
 

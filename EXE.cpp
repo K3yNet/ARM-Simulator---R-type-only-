@@ -1,7 +1,6 @@
-#include<bits/stdc++.h>
-#include "memory.hpp"
-#include "ID.hpp"
-using namespace std;
+#ifndef _TYPES_H
+#include "types.hpp"
+#endif
 
 bitset<32> bitAdder(char type, bitset<32> a, bitset<32> b){
 

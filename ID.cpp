@@ -1,18 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-struct RegisterIdEx{
-  
-  bitset<8> opcode;
-  bitset<8> regWrite;
-
-  bitset<32> registerAData;
-  bitset<32> registerBData;
-  bitset<32> registerCData;
-
-  bitset<8> imediate;
-
-};
+#ifndef _TYPES_H
+#include "types.hpp"
+#endif
 
 RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
   
