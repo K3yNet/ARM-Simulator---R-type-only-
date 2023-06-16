@@ -31,7 +31,7 @@ bitset<32> bitAdder(char type, bitset<32> a, bitset<32> b){
 
 }
 
-pair<bitset<8>, bitset<32>> execution(RegisterIdEx reg, Memory memory){
+pair<bitset<8>, bitset<32>> execution(RegisterIdEx reg, Memory *memory){
 
   pair<bitset<8>, bitset<32>> result;
   
@@ -77,13 +77,13 @@ pair<bitset<8>, bitset<32>> execution(RegisterIdEx reg, Memory memory){
   }
   else if (reg.opcode == 0b00001111){ // LOAD
     result.first = reg.regWrite;
-    bitset<32> data (memory.getData(reg.registerAData.to_ulong()).to_ulong());
+    bitset<32> data (memory->getData(reg.registerAData.to_ulong()).to_ulong());
     result.second = data;
   }
   else if (reg.opcode == 0b00010000){ // STORE
     result.first = 0b0;
     bitset<16> data (reg.registerAData.to_ulong());
-    memory.setData(reg.registerCData.to_ulong(), data);
+    memory->setData(reg.registerCData.to_ulong(), data);
   }
   else if (reg.opcode == 0b00010001){ // ADDI
     bitset<32> constant (reg.imediate.to_ulong());

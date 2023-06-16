@@ -9,13 +9,9 @@
 
 void CPU(vector<pair<int, bitset<32>>> instructions){
 
-  Memory memory;
+  Memory *memory = new Memory();
 
-  cout << "memoria criada" << endl;
-
-  memory.setInstruction(instructions);
-
-  cout << "memoria de instruções setada" << endl;
+  memory->setInstruction(instructions);
 
   bitset<32> registerIfId;
 
@@ -23,17 +19,15 @@ void CPU(vector<pair<int, bitset<32>>> instructions){
 
   pair<bitset<8>, bitset<32>> registerExWb;
 
-  for (int i = 0; registerIfId.all(); i++){
+  for (int i = 0;; i++){
     registerIfId = instructionFetch(i, memory);
-    cout << "ID" << endl;
+    if (registerIfId.all() or registerIfId.none())
+      break;
     registerIdEx = instructionDecoder(registerIfId, memory);
-    cout << "IF" << endl;
     registerExWb = execution(registerIdEx, memory);
-    cout << "EXEC" << endl;
     writeBack(registerExWb, memory);
-    cout << "WB" << endl;
   }
 
-  memory.printAll();
+  memory->printAll();
 
 }

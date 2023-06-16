@@ -2,7 +2,7 @@
 #include "types.hpp"
 #endif
 
-RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
+RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory *memory){
   
   RegisterIdEx reg;
   bitset<8> opcode;
@@ -16,6 +16,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
     j--;
   }
 
+  reg.opcode = opcode;
+
   if(opcode == 0b00000001){ // ADD
     
     for (int i = 7; i >= 0; i--){
@@ -23,8 +25,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
     
   }
@@ -35,8 +37,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -55,8 +57,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -67,8 +69,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -78,7 +80,7 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterC[i] = registerIfId[i];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
     reg.regWrite = numRegisterC;
   
   }
@@ -89,8 +91,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -101,8 +103,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -113,8 +115,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -124,7 +126,7 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterC[i] = registerIfId[i];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -134,7 +136,7 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterC[i] = registerIfId[i];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -144,8 +146,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterC[i] = registerIfId[i];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerCData = memory.getRegister(numRegisterC.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerCData = memory->getRegister(numRegisterC.to_ulong());
 
   }
   else if (opcode == 0b00010001){ // ADDI
@@ -155,7 +157,7 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
     reg.imediate = numRegisterB;
     reg.regWrite = numRegisterC;
 
@@ -167,7 +169,7 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
     reg.imediate = numRegisterB;
     reg.regWrite = numRegisterC;
 
@@ -179,8 +181,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -191,8 +193,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }
@@ -203,8 +205,8 @@ RegisterIdEx instructionDecoder(bitset<32> registerIfId, Memory memory){
       numRegisterB[i] = registerIfId[i + 8];
       numRegisterA[i] = registerIfId[i + 16];
     }
-    reg.registerAData = memory.getRegister(numRegisterA.to_ulong());
-    reg.registerBData = memory.getRegister(numRegisterB.to_ulong());
+    reg.registerAData = memory->getRegister(numRegisterA.to_ulong());
+    reg.registerBData = memory->getRegister(numRegisterB.to_ulong());
     reg.regWrite = numRegisterC;
 
   }

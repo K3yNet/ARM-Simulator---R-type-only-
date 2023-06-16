@@ -24,6 +24,7 @@ vector<string> readFile(){
   }
   else{
     cout << "Erro na leitura do file" << endl;
+    throw runtime_error("Aruivo nao encontrado");
   }
 
   return instructionList;
