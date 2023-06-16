@@ -1,6 +1,5 @@
 addi R1, R0, 10
 addi R2, R0, 5
-add R3, R1, R2
-store R3, R0
-load R5, R0
-halt
+xor R3, R1, R2
+add R3, R2, R1
+asr R3, R2, R1
