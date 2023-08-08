@@ -1,6 +1,6 @@
 # Simulador de Processador ARM para Instruções do Tipo R
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Bem-vindo ao Simulador de Processador ARM para Instruções do Tipo R! Este é um projeto que desenvolvi para simular o funcionamento de um processador baseado na arquitetura ARM, focando exclusivamente nas instruções do tipo R. Com esse simulador, você poderá entender melhor como funcionam e como são executadas as instruções do tipo R em processadores ARM.
 
